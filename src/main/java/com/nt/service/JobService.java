@@ -1,8 +1,5 @@
 package com.nt.service;
-
-
 import com.nt.dto.JobRequestDTO;
-import com.nt.dto.JobResponseDto;
 import com.nt.entity.Job;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

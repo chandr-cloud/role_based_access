@@ -4,11 +4,8 @@ import java.time.LocalDate;
 import java.util.Set;
 
 import com.nt.auth.RoleType;
-import com.nt.entity.Doctor;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -29,12 +26,8 @@ public class SignupRequestDto {
 
 	private String fullName;
 
-	private String insuranceId;
-
 	private Set<RoleType> roles;
 
-	private String specialization;
-
-	private Boolean headDoctor;
+	private AddressDto address;
 
 }

@@ -56,8 +56,4 @@ public class Admins {
 	@Column(updatable = false)
 	private LocalDateTime createdAt;
 
-	@OneToOne(cascade = { CascadeType.ALL }, orphanRemoval = true)
-	@JoinColumn(name = "admin_insurance_id") // owning side
-	private Insurance insurance;
-
 }

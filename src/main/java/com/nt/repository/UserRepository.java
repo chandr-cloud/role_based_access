@@ -1,4 +1,4 @@
-package com.nt.authrepo;
+package com.nt.repository;
 
 import java.util.Optional;
 

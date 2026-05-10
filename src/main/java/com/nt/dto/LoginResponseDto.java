@@ -1,10 +1,5 @@
 package com.nt.dto;
 
-import java.util.HashSet;
-import java.util.Set;
-
-import com.nt.auth.RoleType;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,6 +7,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * Response DTO for login and token refresh operations.
+ * Contains access token, refresh token, and expiry information.
+ */
 @Data
 @Builder
 @Getter
@@ -20,11 +19,13 @@ import lombok.Setter;
 @AllArgsConstructor
 public class LoginResponseDto {
 
-	private String token;
+	private String accessToken;
 
-	private String username;
+	private String refreshToken;
 
-	private String user;
+	private String tokenType;
 
-	Set<RoleType> roles = new HashSet<>();
+	private long expiresIn;
+
+	private long refreshExpiresIn;
 }

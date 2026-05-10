@@ -1,5 +1,6 @@
 package com.nt.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -12,33 +13,61 @@ import io.swagger.v3.oas.models.security.SecurityRequirement;
 import io.swagger.v3.oas.models.security.SecurityScheme;
 import io.swagger.v3.oas.models.servers.Server;
 
+/**
+ * OpenAPI/Swagger configuration for API documentation.
+ * Includes JWT bearer authentication for secured APIs.
+ */
 @Configuration
 public class SwaggerConfig {
 
-	@Bean
-	public OpenAPI apiInfo() {
-		return new OpenAPI()
-				.info(new Info()
-						.title("Library Management API")
-						.description("REST API for Library Management System with JWT Authentication")
-						.version("1.0.0")
-						.contact(new Contact()
-								.name("Your Name")
-								.email("your.email@example.com"))
-						.license(new License()
-								.name("MIT License")
-								.url("https://opensource.org/licenses/MIT")))
-				.servers(java.util.List.of(
-						new Server().url("http://localhost:8080").description("Local Development Server")))
-				.components(new Components()
-						.addSecuritySchemes("bearerAuth",
-								new SecurityScheme()
-										.type(SecurityScheme.Type.HTTP)
-										.scheme("bearer")
-										.bearerFormat("JWT")
-										.description("JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"")))
-				.security(java.util.List.of(new SecurityRequirement().addList("bearerAuth")));
-	}
-// http://localhost:8080/swagger-ui/index.html
+    @Value("${server.port:8080}")
+    private int serverPort;
 
+    @Bean
+    public OpenAPI customOpenAPI() {
+        String serverUrl = "http://localhost:" + serverPort;
+        
+        // Build info
+        Info info = new Info();
+        info.setTitle("Library Management API");
+        info.setVersion("1.0");
+        info.setDescription("REST API for Library Management System with JWT Authentication");
+        
+        Contact contact = new Contact();
+        contact.setName("API Support");
+        contact.setEmail("support@library.com");
+        info.setContact(contact);
+        
+        License license = new License();
+        license.setName("Apache 2.0");
+        license.setUrl("https://www.apache.org/licenses/LICENSE-2.0");
+        info.setLicense(license);
+        
+        // Build server
+        Server server = new Server();
+        server.setUrl(serverUrl);
+        server.setDescription("Local server");
+        
+        // Build security scheme
+        SecurityScheme securityScheme = new SecurityScheme();
+        securityScheme.setType(SecurityScheme.Type.HTTP);
+        securityScheme.setScheme("bearer");
+        securityScheme.setBearerFormat("JWT");
+        securityScheme.setDescription("Enter JWT token");
+        
+        Components components = new Components();
+        components.addSecuritySchemes("Bearer Authentication", securityScheme);
+        
+        SecurityRequirement securityRequirement = new SecurityRequirement();
+        securityRequirement.addList("Bearer Authentication");
+        
+        // Build OpenAPI
+        OpenAPI openAPI = new OpenAPI();
+        openAPI.setInfo(info);
+        openAPI.addServersItem(server);
+        openAPI.setComponents(components);
+        openAPI.addSecurityItem(securityRequirement);
+        
+        return openAPI;
+    }
 }

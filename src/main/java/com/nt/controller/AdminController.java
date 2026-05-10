@@ -21,15 +21,10 @@ public class AdminController {
 
     private final AdminService adminService;
 
-//    @GetMapping("/users")
-//    @PreAuthorize("hasRole('ADMIN')")
-//    public ResponseEntity<List<PatientResponseDto>> getAllUsers() {
-//        return ResponseEntity.ok(patientService.getAllPatients());
-//    }
     @GetMapping("/all/roles")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Map<String, List<RolesResponseDto>>> getAllUserRoles() {
         return ResponseEntity.ok(adminService.getAllUserRoles());
     }
-    
+
 }

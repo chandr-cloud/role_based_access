@@ -17,33 +17,33 @@ public class JobController {
 
     private final JobService jobService;
 
-    // ✅ CREATE (ADMIN ONLY)
+    //  CREATE (ADMIN ONLY)
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
     public ResponseEntity<Job> createJob(@RequestBody JobRequestDTO jobRequestDTO) {
         return ResponseEntity.ok(jobService.createJob(jobRequestDTO));
     }
 
-    // ✅ READ ALL (Public)
+    //  READ ALL (Public)
     @GetMapping
     public ResponseEntity<List<Job>> getAllJobs() {
         return ResponseEntity.ok(jobService.getAllJobs());
     }
 
-    // ✅ READ BY ID
+    //  READ BY ID
     @GetMapping("/{id}")
     public ResponseEntity<Job> getJobById(@PathVariable Long id) {
         return ResponseEntity.ok(jobService.getJobById(id));
     }
 
-    // ✅ UPDATE (ADMIN ONLY)
+    //  UPDATE (ADMIN ONLY)
     @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/{id}")
     public ResponseEntity<Job> updateJob(@PathVariable Long id, @RequestBody Job job) {
         return ResponseEntity.ok(jobService.updateJob(id, job));
     }
 
-    // ✅ DELETE (ADMIN ONLY)
+    //  DELETE (ADMIN ONLY)
     @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteJob(@PathVariable Long id) {

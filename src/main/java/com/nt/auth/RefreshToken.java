@@ -1,8 +1,6 @@
-package com.nt.entity;
+package com.nt.auth;
 
 import java.time.Instant;
-
-import com.nt.auth.UserRole;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

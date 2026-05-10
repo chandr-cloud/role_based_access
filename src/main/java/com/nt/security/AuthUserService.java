@@ -17,7 +17,7 @@ import com.nt.dto.LoginResponseDto;
 import com.nt.dto.SignupRequestDto;
 import com.nt.dto.SignupResponseDto;
 import com.nt.entity.Admins;
-import com.nt.entity.RefreshToken;
+import com.nt.auth.RefreshToken;
 import com.nt.error.InvalidTokenException;
 import com.nt.error.TokenExpiredException;
 import com.nt.repository.AdminRepository;

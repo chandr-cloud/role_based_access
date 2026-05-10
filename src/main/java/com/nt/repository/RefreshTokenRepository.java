@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.nt.entity.RefreshToken;
+import com.nt.auth.RefreshToken;
 
 /**
  * Repository for refresh token operations.

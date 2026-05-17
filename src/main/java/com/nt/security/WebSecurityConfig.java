@@ -26,9 +26,9 @@ public class WebSecurityConfig {
     @Order(1)
     public SecurityFilterChain mvcSecurityFilterChain(HttpSecurity http) throws Exception {
         http.securityMatcher("/login", "/signup", "/dashboard/**",
-                "/css/**", "/js/**", "/images/**", "/error")
+                "/css/**", "/js/**", "/images/**", "/error", "/favicon.ico")
                 .authorizeHttpRequests(auth ->
-                        auth.requestMatchers("/login", "/signup", "/css/**", "/js/**", "/images/**", "/error")
+                        auth.requestMatchers("/login", "/signup", "/css/**", "/js/**", "/images/**", "/error", "/favicon.ico")
                                 .permitAll().requestMatchers("/dashboard/**")
                                 .authenticated()).formLogin(form ->
                         form.loginPage("/login").defaultSuccessUrl("/dashboard", true)

@@ -105,20 +105,9 @@
   </div>
 </div>
 
-<script>
-  (function () {
-    const toggle = document.getElementById('togglePassword');
-    const password = document.getElementById('password');
-    if (!toggle || !password) return;
-
-    toggle.addEventListener('click', function () {
-      const isPassword = password.type === 'password';
-      password.type = isPassword ? 'text' : 'password';
-      toggle.textContent = isPassword ? 'Hide' : 'Show';
-    });
-  })();
-</script>
+<script src="/auth-login.js"></script>
 
 </body>
 </html>
+
 

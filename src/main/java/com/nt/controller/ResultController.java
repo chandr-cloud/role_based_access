@@ -18,7 +18,7 @@ import static org.springframework.http.ResponseEntity.noContent;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/results")
+@RequestMapping("/results")
 public class ResultController {
 
     private final ResultService resultService;

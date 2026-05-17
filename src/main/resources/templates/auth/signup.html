@@ -118,59 +118,9 @@
   </div>
 </div>
 
-<script>
-  function validatePasswords() {
-    const form = document.getElementById('signupForm');
-    const password = document.getElementById('password');
-    const confirmPassword = document.getElementById('confirmPassword');
-    const mismatch = document.getElementById('passwordMismatch');
-
-    if (!password || !confirmPassword || !mismatch) return true;
-
-    const p = password.value;
-    const cp = confirmPassword.value;
-
-    if (p !== cp) {
-      mismatch.textContent = 'Passwords do not match. Please re-check.';
-      mismatch.classList.remove('d-none');
-      if (form) form.querySelector('button[type="submit"]').disabled = false;
-      confirmPassword.focus();
-      return false;
-    }
-
-    mismatch.classList.add('d-none');
-    return true;
-  }
-
-  (function () {
-    const password = document.getElementById('password');
-    const confirmPassword = document.getElementById('confirmPassword');
-
-    // Only move focus when the user is typing in confirmPassword.
-    // This prevents cursor from jumping while editing the password field.
-    confirmPassword && confirmPassword.addEventListener('input', function () {
-      validatePasswords();
-    });
-
-    password && password.addEventListener('input', function () {
-      const form = document.getElementById('signupForm');
-      const mismatch = document.getElementById('passwordMismatch');
-      if (!mismatch) return;
-
-      if (password.value !== confirmPassword.value) {
-        mismatch.textContent = 'Passwords do not match. Please re-check.';
-        mismatch.classList.remove('d-none');
-        if (form) {
-          const submitBtn = form.querySelector('button[type="submit"]');
-          if (submitBtn) submitBtn.disabled = false;
-        }
-      } else {
-        mismatch.classList.add('d-none');
-      }
-    });
-  })();
-</script>
+<script src="/auth-signup.js"></script>
 
 </body>
 </html>
+
 

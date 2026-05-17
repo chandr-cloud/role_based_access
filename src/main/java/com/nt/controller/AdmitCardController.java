@@ -22,7 +22,7 @@ import static org.springframework.http.ResponseEntity.noContent;
 @RestController
 @RequiredArgsConstructor
 @Slf4j
-@RequestMapping("/api/v1/admit-cards")
+@RequestMapping("/admit-cards")
 public class AdmitCardController {
 
     private final AdmitCardService admitCardService;
